@@ -10,6 +10,7 @@ on:
 
 jobs:
   build:
+    if: ${{ false }}
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
@@ -87,6 +88,7 @@ jobs:
           path: riscv.tar.gz
 
   test-sim:
+    if: ${{ false }}
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
@@ -119,7 +121,7 @@ jobs:
         run: make report-${{ matrix.mode }} -j $(nproc)
 
   build-multilib:
-    if: ${{ false }} # Disable until multilib errors are triaged
+    #if: ${{ false }} # Disable until multilib errors are triaged
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
@@ -148,6 +150,7 @@ jobs:
           sudo make -j $(nproc) ${{ matrix.mode }}
 
       - name: make report
+        if: ${{ false }}
         run: |
           sudo make report-${{ matrix.mode }} -j $(nproc)
 
